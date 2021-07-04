@@ -5,6 +5,7 @@ M.config = {
     textobjects = {},
     paste_key = nil,
     register_print_cmd = false,
+    registers = nil,
 }
 
 local function product(textobjects)

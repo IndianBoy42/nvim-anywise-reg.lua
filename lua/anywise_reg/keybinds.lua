@@ -62,11 +62,17 @@ end
 M.setup_keymaps = function()
     if config.paste_key ~= nil then
         local prefixes = {'', '""'}
-        for i=1,9 do
-            table.insert(prefixes, '"'..string.format("%d", i))
-        end
-        for c=97,122 do
-            table.insert(prefixes, '"'..string.char(c))
+        if config.registers ~= nil then
+            for _, reg in ipairs(config.registers) do
+                table.insert(prefixes, '"' .. reg)
+            end
+        else
+            for i = 1, 9 do
+                table.insert(prefixes, '"' .. string.format("%d", i))
+            end
+            for c = 97, 122 do
+                table.insert(prefixes, '"' .. string.char(c))
+            end
         end
         for _, prefix in ipairs(prefixes) do
             setup_keymaps_for_prefix(prefix)
